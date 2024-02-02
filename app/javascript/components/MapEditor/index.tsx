@@ -52,6 +52,7 @@ export default function MapEditor({
 
       <ImportFileInput featureCollection={featureCollection} {...actions} />
       <AddressInput
+        featureCollection={featureCollection}
         screenReaderInstructions={autocompleteScreenReaderInstructions}
         announceTemplateId={autocompleteAnnounceTemplateId}
       />
@@ -84,7 +85,7 @@ export default function MapEditor({
           </>
         ) : null}
       </MapLibre>
-      <PointInput />
+      <PointInput featureCollection={featureCollection} />
     </>
   );
 }
