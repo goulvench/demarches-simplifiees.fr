@@ -1,0 +1,14 @@
+- content_for(:title, "Documents")
+
+= render partial: "header", locals: { dossier: @dossier }
+
+.container
+  .gallery{ "data-controller": "lightbox"}
+    - @dossier.champs.filter { _1.is_a?(Champs::PieceJustificativeChamp) }.each do |champ|
+      - champ.piece_justificative_file.map(&:blob).each do |blob|
+        - if blob.content_type == 'application/pdf'
+          = link_to blob.url, class: 'gallery-item', id: blob.id, data: { iframe: true, src: blob.url, poster: blob.url }, title: "#{champ.libelle} -- #{blob.filename}" do
+            = image_tag(blob.url)
+        - else
+          = link_to image_url(blob.url), class: "gallery-item", title: "#{champ.libelle} -- #{blob.filename}" do
+            = image_tag(blob.url)
