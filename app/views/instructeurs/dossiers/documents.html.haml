@@ -7,8 +7,12 @@
     - @dossier.champs.filter { _1.is_a?(Champs::PieceJustificativeChamp) }.each do |champ|
       - champ.piece_justificative_file.map(&:blob).each do |blob|
         - if blob.content_type == 'application/pdf'
-          = link_to blob.url, class: 'gallery-item', id: blob.id, data: { iframe: true, src: blob.url, poster: blob.url }, title: "#{champ.libelle} -- #{blob.filename}" do
+          = link_to blob.url, class: 'gallery-item', id: blob.id, data: { iframe: true, src: blob.url, poster: blob.url }, type: "application/pdf", title: "#{champ.libelle} -- #{blob.filename}" do
             = image_tag(blob.url)
+
+          -# %iframe { src: blob.url, height: '200px', width: '100%' }
+          -# %iframe.pdf_preview { title: "#{champ.libelle} -- #{blob.filename}", src: blob.url, height: '200px', width: '200px', frameborder: 0, type: "application/pdf" }
         - else
           = link_to image_url(blob.url), class: "gallery-item", title: "#{champ.libelle} -- #{blob.filename}" do
             = image_tag(blob.url)
+-# %iframe { :src => "https://sites.ac-nancy-metz.fr/eco-e-bellefontaine/file/Francoise/Les_types_de_paysages.pdf", :height => '200px', :width => '100%' }

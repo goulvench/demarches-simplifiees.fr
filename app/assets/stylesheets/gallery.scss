@@ -1,10 +1,17 @@
 .gallery {
-    img {
-      height: 200px;
-      margin: 10px;
-      cursor: pointer;
-    }
+  img {
+    height: 200px;
+    margin: 10px;
+    cursor: pointer;
   }
+  .pdf_preview {
+    border: 1px solid black;
+    cursor: pointer;
+    height: '200px'!important;
+    width: '100%'!important;
+    frameborder: 0!important;
+  }
+}
 
   .lg-has-iframe {
   width: 80% !important;

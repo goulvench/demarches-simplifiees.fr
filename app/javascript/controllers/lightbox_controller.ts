@@ -15,6 +15,11 @@ export default class extends Controller {
     options: Object
   };
 
+  // static targets = [ 'preview' ]
+
+  // declare readonly previewTarget: HTMLIFrameElement;
+
+
   connect(): void {
     const options = {
       plugins: [lgZoom, lgThumbnail, lgRotate],
@@ -27,6 +32,12 @@ export default class extends Controller {
     };
 
     this.lightGallery = lightGallery(this.element as HTMLElement, options);
+
+    // this.previewTarget.src = this.previewTarget.src; // reload the iframe
+    // this.on('turbo:submit-end', () => {
+    //   // eslint-disable-next-line no-self-assign
+    // });
+    // });
   }
 
   disconnect(): void {
