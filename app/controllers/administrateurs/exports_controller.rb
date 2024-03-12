@@ -34,8 +34,13 @@ module Administrateurs
     private
 
     def export_format
-      @export_format ||= params[:export_format]
+      @export_format ||= params[:export_format].presence || export_template&.kind
     end
+
+    def export_template
+      @export_template ||= ExportTemplate.find(params[:export_template_id]) if params[:export_template_id].present?
+    end
+
 
     def export_options
       @export_options ||= {
