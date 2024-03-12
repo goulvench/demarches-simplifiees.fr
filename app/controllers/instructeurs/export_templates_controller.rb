@@ -36,6 +36,12 @@ module Instructeurs
       end
     end
 
+    def destroy
+      if @export_template.destroy
+        redirect_to exports_instructeur_procedure_path(procedure: @procedure)
+      end
+    end
+
     def preview
       param = params.require(:export_template).keys.first
       @preview_param = param.delete_prefix("tiptap_")
