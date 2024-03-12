@@ -64,7 +64,7 @@ class ExportTemplate < ApplicationRecord
 
   def tiptap_convert_pj(dossier, pj_stable_id)
     if content_for_pj_id(pj_stable_id)["content"]&.first["content"]
-      render_attributes_for(content_for_pj_id(pj_stable_id))
+      render_attributes_for(content_for_pj_id(pj_stable_id), dossier)
     end
   end
 
